@@ -1,0 +1,80 @@
+.temp {
+   text-align: center;
+   font-size: 200rpx;
+   line-height: 280rpx;
+   opacity: 0.8;
+}
+.weather {
+  text-align: center;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  opacity: 0.65;
+}
+.city {
+  text-align: center;
+  font-size: 40rpx;
+  line-height: 200rpx;
+  opacity: 0.65;
+}
+.weather-wrapper{
+  padding-top: 174rpx;
+  padding-bottom: 250rpx;
+  position: relative;
+}
+.weather-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.timetips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.timetips-icon {
+  margin-right: 10rpx;
+  width: 36rpx;
+  height: 28rpx;
+}
+
+.timetips-text {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.5;
+}
+
+.forecast-list{
+  display: flex;
+  flex-direction: row;
+}
+
+.forecast-item{
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 160rpx;
+  align-items: center; 
+}
+
+.forecast-time{
+  font-size: 26rpx;
+  line-height: 32rpx;
+}
+
+.forecast-icon{
+  margin-top: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.forecast-temp{
+  margin-top: 30rpx;
+  font-size: 40rpx;
+  line-height: 56rpx;  
+}
