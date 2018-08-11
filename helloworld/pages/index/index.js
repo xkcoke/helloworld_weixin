@@ -24,6 +24,8 @@ Page({
     nowWeatherBackground:'',
     forecastWeatherIcon:'',
     forecast:[],
+    nowTime:'',
+    tempRange:'',
   },
   onPullDownRefresh(){
     this.getNow(wx.stopPullDownRefresh())
@@ -73,10 +75,29 @@ Page({
         that.setData({
           forecast:forecast
         })
+        //set middle item
+        let date = new Date()
+        let y = date.getFullYear()
+        let m = date.getMonth()
+        let d = date.getDate()
+        let mintemp = result.today['minTemp']
+        let maxtemp = result.today['maxTemp']
+        that.setData({
+          nowTime:y+'年'+(m+1)+'月'+d+'日',
+          tempRange:'最低'+mintemp+'°, 最高'+maxtemp+'°',
+        })
       },
       complete: function(){
         callback && callback()//if语句简写形式
       }
+    })
+  },
+  onTapSummary(){
+    wx.showToast({
+      title: '',
+    })
+    wx.navigateTo({
+      url: '/pages/list/list',
     })
   }
 })

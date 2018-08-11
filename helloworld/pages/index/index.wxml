@@ -2,8 +2,14 @@
   <view class="temp">{{nowTemp}}°</view>
   <view class="weather">{{nowWeather}}</view>
   <view class="city">{{city}}</view>
+  <view class="summary" bindtap='onTapSummary'>
+    <view class="now-time">{{nowTime}}</view>
+    <view class="temp-range">{{tempRange}}</view>
+    <image class="arrow" src="/images/arrow.png"></image>
+  </view>
   <image class="weather-bg" src="{{nowWeatherBackground}}" mode="scaleToFill"></image>
 </view>
+
 <view class="timetips">
   <image class="timetips-icon" src="/images/time-icon.png"></image>
   <view class="timetips-text">未来24小时天气预测</view>

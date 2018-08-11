@@ -17,8 +17,8 @@
   opacity: 0.65;
 }
 .weather-wrapper{
-  padding-top: 174rpx;
-  padding-bottom: 250rpx;
+  padding-top: 0rpx;
+  padding-bottom: 0rpx;
   position: relative;
 }
 .weather-bg {
@@ -77,4 +77,33 @@
   margin-top: 30rpx;
   font-size: 40rpx;
   line-height: 56rpx;  
+}
+
+.summary{
+  position: relative;
+}
+
+.now-time{
+  margin-top: 0rpx;
+  font-size: 35rpx;
+  line-height: 35rpx;
+  text-align: center;
+  opacity: 0.65;
+}
+
+.temp-range{
+  margin-top: 0rpx;
+  font-size: 35rpx;
+  line-height: 100rpx;
+  text-align: center;
+  opacity: 0.65;
+}
+
+.arrow{
+  position: absolute;
+  top: 30rpx;
+  left: 700rpx;
+  width: 26rpx;
+  height: 48rpx;
+  z-index: 0;
 }
