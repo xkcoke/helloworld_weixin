@@ -1,7 +1,13 @@
 <view class="weather-wrapper">
   <view class="temp">{{nowTemp}}°</view>
   <view class="weather">{{nowWeather}}</view>
-  <view class="city">{{city}}</view>
+  <view class="location-wrapper" bindtap='onTapLocation'>
+    <view class="location">
+      <image class="location-icon" src="/images/location-icon.png"></image>
+      <view class="city">{{city}}</view>
+    </view>
+    <view class="location-text">{{locationTipsText}}</view>
+  </view>
   <view class="summary" bindtap='onTapSummary'>
     <view class="now-time">{{nowTime}}</view>
     <view class="temp-range">{{tempRange}}</view>

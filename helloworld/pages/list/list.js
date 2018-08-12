@@ -8,13 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    forecast:[]
+    forecast:[],
+    city:'广州市'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      city:options.city
+    })
+    console.log(options.city)
     this.getForecast()
   },
 
@@ -73,11 +78,10 @@ Page({
       url: 'https://test-miniprogram.com/api/weather/future',
       data: {
         time: new Date().getTime(),
-        city: '广州市'
+        city: that.city
       },
       success: function (res) {
         let result = res.data.result
-        console.log(result)
         let forecast = []
         let timestamp = Date.parse(new Date());
         timestamp = timestamp / 1000

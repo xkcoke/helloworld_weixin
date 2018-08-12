@@ -16,6 +16,8 @@ const weatherColorMap = {
   'snow': '#aae1fc'
 }
 
+const QQMapWX = require('../../libs/qqmap-wx-jssdk.js')
+
 Page({
   data:{
     city: '广州市',
@@ -26,11 +28,15 @@ Page({
     forecast:[],
     nowTime:'',
     tempRange:'',
+    locationTipsText:'点击获取当前位置',
   },
   onPullDownRefresh(){
     this.getNow(wx.stopPullDownRefresh())
   },
   onLoad(){
+    this.qqmapsdk = new QQMapWX({
+      key: 'DLOBZ-HJQED-IUF43-PJOMO-PYMC3-TPB2E'
+    });
     this.getNow()
     //for test
 
@@ -46,7 +52,6 @@ Page({
         let result = res.data.result
         let temp = result.now.temp
         let weather = result.now.weather
-        console.log(result)
         that.setData({
           nowTemp: temp,
           nowWeather: weatherMap[weather],
@@ -97,7 +102,28 @@ Page({
       title: '',
     })
     wx.navigateTo({
-      url: '/pages/list/list',
+      url: '/pages/list/list?city='+this.data.city
+    })
+  },
+  onTapLocation(){
+    let that = this
+    wx.getLocation({
+      success: function(res) {
+        that.qqmapsdk.reverseGeocoder({
+          location:{
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function(res){
+            let city = res.result.address_component.city
+            that.setData({
+              city:city,
+              locationTipsText:' '
+            })
+            that.getNow()
+          }
+        })
+      },
     })
   }
 })

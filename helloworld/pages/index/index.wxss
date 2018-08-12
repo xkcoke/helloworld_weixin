@@ -10,11 +10,30 @@
   line-height: 56rpx;
   opacity: 0.65;
 }
+.location-wrapper{
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+.location{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.location-icon{
+  align-self: center;
+  width: 21rpx;
+  height: 30rpx;
+}
 .city {
+  margin-left: 25rpx;
   text-align: center;
   font-size: 40rpx;
-  line-height: 200rpx;
   opacity: 0.65;
+}
+.location-text{
+  font-size: 30rpx;
+  text-align: center;
+  height:42rpx;
 }
 .weather-wrapper{
   padding-top: 0rpx;
