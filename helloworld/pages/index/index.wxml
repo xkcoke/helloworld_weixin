@@ -1,7 +1,10 @@
 <view class="weather-wrapper">
   <view class="temp">{{nowTemp}}°</view>
   <view class="weather">{{nowWeather}}</view>
-  <view class="location-wrapper" bindtap='onTapLocation'>
+  <view wx:if="{{locationAuth}}" class="button-wrapper">
+    <button type="default" class="setButton" open-type='openSetting' plain='true'>点击获取位置权限</button>
+  </view>
+  <view wx:else class="location-wrapper" bindtap='onTapLocation'>
     <view class="location">
       <image class="location-icon" src="/images/location-icon.png"></image>
       <view class="city">{{city}}</view>

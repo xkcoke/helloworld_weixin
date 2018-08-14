@@ -10,6 +10,13 @@
   line-height: 56rpx;
   opacity: 0.65;
 }
+.setButton::after{
+  border: none
+}
+.button-wrapper{
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
 .location-wrapper{
   margin-top: 50rpx;
   margin-bottom: 50rpx;

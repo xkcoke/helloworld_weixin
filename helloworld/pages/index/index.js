@@ -18,6 +18,9 @@ const weatherColorMap = {
 
 const QQMapWX = require('../../libs/qqmap-wx-jssdk.js')
 
+const UNPROMPTED = 0
+const UNAUTHORIZED = 1
+
 Page({
   data:{
     city: '广州市',
@@ -28,7 +31,20 @@ Page({
     forecast:[],
     nowTime:'',
     tempRange:'',
+    locationAuth: UNPROMPTED,
     locationTipsText:'点击获取当前位置',
+  },
+  onShow(){
+    let that = this
+    wx.getSetting({
+      success: function(res){
+        let auth = res.authSetting['scope.userLocation']
+        if(auth==true)
+          that.setData({
+            locationAuth: UNPROMPTED
+          })
+      }
+    })
   },
   onPullDownRefresh(){
     this.getNow(wx.stopPullDownRefresh())
@@ -37,7 +53,15 @@ Page({
     this.qqmapsdk = new QQMapWX({
       key: 'DLOBZ-HJQED-IUF43-PJOMO-PYMC3-TPB2E'
     });
-    this.getNow()
+    wx.getSetting({
+      success: res=>{
+        let auth = res.authSetting['scope.userLocation']
+        if(auth)
+          this.onTapLocation()
+        else
+          this.getNow()
+      }
+    })
     //for test
 
   },
@@ -124,6 +148,11 @@ Page({
           }
         })
       },
+      fail: function(){
+        that.setData({
+          locationAuth: UNAUTHORIZED
+        })
+      }
     })
-  }
+  },
 })
